@@ -1,4 +1,4 @@
-import { getRandomInt, getRandomArrayElement } from './utils';
+import { getRandomInt, getRandomArrayElement } from './util';
 
 const PHOTO_POST_COUNT = 25;
 const MAX_VALUE = 5;
