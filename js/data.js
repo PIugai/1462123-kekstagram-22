@@ -1,6 +1,5 @@
-import { getRandomInt, getRandomArrayElement } from './util';
+import { getRandomInt, getRandomArrayElement, getUniqueRandomInteger } from './util';
 
-const PHOTO_POST_COUNT = 25;
 const MAX_VALUE = 5;
 const MIN_VALUE = 1;
 const LIKES_MIN_VALUE = 15;
@@ -32,8 +31,8 @@ const USER_NAMES = [
 
 const createComment = (id) => {
   return {
-    id: id,
-    avatar: `img/avatar-${getRandomInt(MIN_VALUE, MAX_VALUE)}.svg`,
+    id: getUniqueRandomInteger(MIN_VALUE, id),
+    avatar: `img/avatar-${getUniqueRandomInteger(MIN_VALUE, MAX_VALUE)}.svg`,
     message: getRandomArrayElement(POST_COMMENTS, MAX_VALUE),
     name: getRandomArrayElement(USER_NAMES, MAX_VALUE),
   }
@@ -42,14 +41,12 @@ const createComment = (id) => {
 
 const createPost = (id) => {
   return {
-    id: id,
-    url: `photos/${id}.jpg`,
+    id: getUniqueRandomInteger(MIN_VALUE, id),
+    url: `photos/${getUniqueRandomInteger(MIN_VALUE, id)}.jpg`,
     desc: getRandomArrayElement(POST_DESCRIPTIONS, MAX_VALUE),
     likes: getRandomInt(LIKES_MIN_VALUE, LIKES_MAX_VALUE),
     comments: new Array(getRandomInt(MIN_VALUE, MAX_VALUE)).fill(null).map(() => createComment(id)),
   }
 }
 
-const getPosts = (PHOTO_POST_COUNT) => new Array(PHOTO_POST_COUNT).fill(null).map(() => createPost(getRandomInt(MIN_VALUE, PHOTO_POST_COUNT)));
-
-getPosts(PHOTO_POST_COUNT);
+export { createPost }
