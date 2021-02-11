@@ -1,4 +1,3 @@
-
 const getRandomInt = (min, max) => {
   if (max <= min) {
     return 'Максимальное значени должно быть больше минимального.';
