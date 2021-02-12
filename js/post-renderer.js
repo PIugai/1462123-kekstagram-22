@@ -1,8 +1,9 @@
 import { createPost } from './data'
 
+const POST_AMOUNT = 25;
+
 const getPosts = (total) => new Array(total).fill(null).map(() => createPost(total));
 
-const postAmount = 25;
-getPosts(postAmount);
+getPosts(POST_AMOUNT);
 
 
