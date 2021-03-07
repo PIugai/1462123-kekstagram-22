@@ -13,22 +13,6 @@ const getRandomArrayElement = (elements, min) => {
   return elements[getRandomInt(min, elements.length - 1)];
 }
 
-const getUniqueRandomInteger = (min, max) => {
-  const previousValues = [];
-
-  return () => {
-    let currentValue = getRandomInt(min, max);
-    if (previousValues.length >= max) {
-      throw new Error('Перебраны все числа из диапазона от ' + min + ' до ' + max);
-    }
-    while (previousValues.includes(currentValue)) {
-      currentValue = getRandomInt(min, max);
-    }
-    previousValues.push(currentValue);
-    return currentValue;
-  };
-};
-
 const isGreaterThanMaxStringLength = (input, max) => {
   if (typeof input === 'string' || input instanceof String) {
     return input.length <= max;
@@ -36,5 +20,4 @@ const isGreaterThanMaxStringLength = (input, max) => {
   return 'Введен неверный формат данных.';
 }
 
-export { getRandomInt, getRandomArrayElement, getUniqueRandomInteger, isGreaterThanMaxStringLength }
-
+export { getRandomInt, getRandomArrayElement, isGreaterThanMaxStringLength }
