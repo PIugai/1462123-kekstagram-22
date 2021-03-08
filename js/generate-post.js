@@ -13,7 +13,7 @@ const generatePost = (index) => {
     url: `photos/${getRandomInt(MIN_VALUE, index)}.jpg`,
     desc: getRandomArrayElement(POST_DESCRIPTIONS, MAX_VALUE),
     likes: getRandomInt(LIKES_MIN_VALUE, LIKES_MAX_VALUE),
-    comments: new Array(getRandomInt(MIN_VALUE, MAX_VALUE)).fill(null).map(() => generateComment(index)),
+    comments: new Array(getRandomInt(MIN_VALUE, MAX_VALUE)).fill(null).map((i) => generateComment(i)),
   }
 }
 
