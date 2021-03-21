@@ -2,7 +2,7 @@ import { getRandomInt, getRandomArrayElement } from './util.js'
 import { POST_COMMENTS, USER_NAMES } from './data.js'
 
 const MAX_VALUE = 4;
-const MIN_VALUE = 0;
+const MIN_VALUE = 1;
 
 const generateComment = (i, index) => {
   return {

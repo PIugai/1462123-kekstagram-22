@@ -1,24 +1,22 @@
-import { generatePost } from './generate-post.js'
-const POST_AMOUNT = 25;
-
-const renderPost = (total) => new Array(total).fill(null).map((i, index) => generatePost(i, index));
+// import { fullPictureView } from './big-picture.js'
 
 const similarListElement = document.querySelector('.pictures');
 const similarPostTemplate = document.querySelector('#picture').content.querySelector('.picture');
 
-const similarPosts = renderPost(POST_AMOUNT);
-
-const renderSimilarPost = () => {
+const renderSimilarPost = (posts) => {
   const similarListFragment = document.createDocumentFragment();
 
-  similarPosts.forEach(({url, desc, likes}) => {
+  posts.forEach(({ url, desc, likes, comments, id }) => {
     const postElement = similarPostTemplate.cloneNode(true);
-    postElement.querySelector('.picture__img')['src'] = url;
-    postElement.querySelector('.picture__img')['alt'] = desc;
+    const pictureImgElement = postElement.querySelector('.picture__img')
+    pictureImgElement.src = url;
+    pictureImgElement.alt = desc;
     postElement.querySelector('.picture__likes').innerText = likes;
+    postElement.querySelector('.picture__comments').innerText = comments.length;
+    pictureImgElement.id = id;
     similarListFragment.appendChild(postElement);
   });
-  
+
   similarListElement.appendChild(similarListFragment);
 };
 
