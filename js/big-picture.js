@@ -25,7 +25,7 @@ const fullPicturePreView = (picture, picturesData) => {
   bodyContainer.classList.add('modal-open')
 }
 
-const renderBigPicture = ({ id, url, comments, likes, desc }) => {
+const renderBigPicture = ({ url, comments, likes, desc }) => {
   const socialComments = bigPicture.querySelector('.social__comments');
 
   bigPicture.querySelector('.big-picture__img').querySelector('img').src = url
@@ -42,10 +42,6 @@ const renderBigPicture = ({ id, url, comments, likes, desc }) => {
 
 const picturePreViewOpen = () => {
   bigPicture.classList.remove('hidden')
-}
-
-const picturePreViewClose = () => {
-  bigPicture.classList.add('hidden')
 }
 
 const createComment = (object) => {
