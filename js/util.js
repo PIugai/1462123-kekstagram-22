@@ -1,4 +1,4 @@
-const getRandomInt = (min, max) => {
+const getRandomIntFromRange = (min, max) => {
   if (max <= min) {
     return 'Максимальное значени должно быть больше минимального.';
   } else if (min >= 0 && max >= 0) {
@@ -9,8 +9,8 @@ const getRandomInt = (min, max) => {
   return 'Диапазон может быть только положительный, включая ноль.';
 }
 
-const getRandomArrayElement = (elements, min) => {
-  return elements[getRandomInt(min, elements.length - 1)];
+const getRandomArrayElement = (array) => {
+  return array[getRandomIntFromRange(0, array.length - 1)];
 }
 
 const isGreaterThanMaxStringLength = (input, max) => {
@@ -20,4 +20,8 @@ const isGreaterThanMaxStringLength = (input, max) => {
   return 'Введен неверный формат данных.';
 }
 
-export { getRandomInt, getRandomArrayElement, isGreaterThanMaxStringLength }
+const isEscEvent = (evt) => {
+  return evt.key === ('Escape' || 'Esc');
+}
+
+export { getRandomIntFromRange, getRandomArrayElement, isGreaterThanMaxStringLength, isEscEvent }
