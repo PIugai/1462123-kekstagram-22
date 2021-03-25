@@ -12,7 +12,6 @@ const closeButton = bigPicture.querySelector('.big-picture__cancel');
 const showBigPicture = (evt) => {
   const pictureId = parseInt(evt.target.parentNode.id)
   const pictureElementData = mockData.find((object) => object.id === pictureId);
-  console.log(pictureElementData)
   renderBigPicture(pictureElementData)
   bigPicture.classList.remove('hidden')
   socialCommentCountBlock.classList.add('hidden')
