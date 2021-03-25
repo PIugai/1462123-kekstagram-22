@@ -1,10 +1,6 @@
-import { generatePost } from './generate-post.js'
-import { renderSimilarPost } from './render-post.js'
-import { initialBigPicture } from './big-picture.js'
+import { renderPosts } from './render-posts.js';
+import { mockData } from './generate-posts.js';
+import './image-upload.js';
+import './editor.js';
 
-const POST_AMOUNT = 25;
-
-const posts = new Array(POST_AMOUNT).fill(null).map((i, index) => generatePost(i, index));
-
-renderSimilarPost(posts);
-initialBigPicture(posts);
+renderPosts(mockData);
