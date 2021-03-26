@@ -24,4 +24,8 @@ const isEscEvent = (evt) => {
   return evt.key === ('Escape' || 'Esc');
 }
 
-export { getRandomIntFromRange, getRandomArrayElement, isGreaterThanMaxStringLength, isEscEvent }
+const hasDuplicates = (array) => {
+  return new Set(array).size !== array.length 
+}
+
+export { getRandomIntFromRange, getRandomArrayElement, isGreaterThanMaxStringLength, isEscEvent, hasDuplicates }
