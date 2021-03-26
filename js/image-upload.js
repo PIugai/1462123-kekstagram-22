@@ -3,7 +3,7 @@ import { tagsInputHandler, descriptionInputHandler } from './validate-input.js'
 import { bodyContainer } from './big-picture.js';
 import { setScaleControls, setSlider, removeSlider } from './editor.js';
 import { sendDataAsync } from './api.js';
-import { showUploadErrorMessage } from './upload-message.js'
+import { showUploadErrorMessage, showUploadSuccessMessage } from './upload-message.js'
 
 const uploadForm = document.querySelector('.img-upload__form');
 const uploadInput = uploadForm.querySelector('.img-upload__input');
@@ -44,19 +44,31 @@ const documentKeydownHandler = (evt) => {
   }
 }
 
+const resetPage = () => {
+  hideImageEditor();
+};
+
+const onSuccessMessage = () => {
+  showUploadSuccessMessage();
+  resetPage();
+};
+
+const onErrorMessage = () => {
+  showUploadErrorMessage();
+  resetPage();
+};
+
 uploadInput.addEventListener('change', uploadInputHandler);
 
-const setUserFormSubmit = (onSuccess) => {
+const setUserFormSubmit = () => {
   uploadForm.addEventListener('submit', (evt) => {
     evt.preventDefault();
 
     sendDataAsync(
-      onSuccess(),
-      showUploadErrorMessage(),
+      onSuccessMessage,
+      onErrorMessage,
       new FormData(evt.target),
     );
-
-    hideImageEditor();
   })
 }
 
