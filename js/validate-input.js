@@ -3,7 +3,7 @@ import { hasDuplicates } from './util.js';
 const uploadForm = document.querySelector('.img-upload__form');
 const tags = uploadForm.querySelector('.text__hashtags');
 const description = uploadForm.querySelector('.text__description');
-const pattern = /^[A-Za-z0-9]+$/;
+const pattern = /^[A-Za-z0-9а-яА-Я]+$/;
 const MAX_TAGS_COUNT = 5;
 const MAX_TAGS_LENGTH = 20;
 const MAX_DESCRIPTION_LENGTH = 140;
@@ -12,22 +12,21 @@ const tagsInputHandler = () => {
   const tagsString = tags.value;
   const tagsArray = tagsString.split(' ').map(tag => tag.toLowerCase());
   const message = validateTags(tagsArray);
-  if (message) {
-    tags.setCustomValidity(message);
-  } else {
-    tags.setCustomValidity('');
-  }
+  message ? tags.setCustomValidity(message) : tags.setCustomValidity('');
   tags.reportValidity();
 }
 
 const validateTag = (tag) => {
   if (tag[0] !== '#') {
     return 'Теги должны начинаться с символа # (решётка)';
-  } else if (tag.length === 1) {
+  }
+  if (tag.length === 1) {
     return 'Хеш-тег не может состоять только из одной решётки';
-  } else if (!tag.slice(1).match(pattern)) {
+  }
+  if (!tag.slice(1).match(pattern)) {
     return 'Теги должны состоять только из букв и чисел';
-  } else if (tag.length > MAX_TAGS_LENGTH) {
+  }
+  if (tag.length > MAX_TAGS_LENGTH) {
     return `Слишком длинный Тег. Максимальная длина: ${MAX_TAGS_LENGTH}`;
   }
 }

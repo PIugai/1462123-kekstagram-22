@@ -24,8 +24,6 @@ const showImageEditor = () => {
 const hideImageEditor = () => {
   editor.classList.add('hidden');
   bodyContainer.classList.remove('modal-open');
-  closeButton.removeEventListener('click', closeButtonHandler);
-  document.removeEventListener('keydown', documentKeydownHandler);
   uploadInput.value = '';
   removeSlider();
 }
