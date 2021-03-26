@@ -2,6 +2,8 @@ import { isEscEvent } from './util.js'
 import { tagsInputHandler, descriptionInputHandler } from './validate-input.js'
 import { bodyContainer } from './big-picture.js';
 import { setScaleControls, setSlider, removeSlider } from './editor.js';
+import { sendDataAsync } from './api.js';
+import { showUploadErrorMessage } from './upload-message.js'
 
 const uploadForm = document.querySelector('.img-upload__form');
 const uploadInput = uploadForm.querySelector('.img-upload__input');
@@ -43,3 +45,19 @@ const documentKeydownHandler = (evt) => {
 }
 
 uploadInput.addEventListener('change', uploadInputHandler);
+
+const setUserFormSubmit = (onSuccess) => {
+  uploadForm.addEventListener('submit', (evt) => {
+    evt.preventDefault();
+
+    sendDataAsync(
+      onSuccess(),
+      showUploadErrorMessage(),
+      new FormData(evt.target),
+    );
+
+    hideImageEditor();
+  })
+}
+
+export { setUserFormSubmit }
