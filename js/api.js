@@ -17,7 +17,7 @@ const sendData = async (onSuccess, onFail, data) => {
     URL,
     {
       method: 'POST',
-      data,
+      body: data,
     },
   )
     .then((response) => {
