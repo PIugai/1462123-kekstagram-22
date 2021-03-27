@@ -2,7 +2,7 @@ import { isEscEvent } from './util.js'
 import { tagsInputHandler, descriptionInputHandler } from './validate-input.js'
 import { bodyContainer } from './big-picture.js';
 import { setScaleControls, setSlider, removeSlider } from './editor.js';
-import { sendDataAsync } from './api.js';
+import { sendData } from './api.js';
 import { showUploadErrorMessage, showUploadSuccessMessage } from './upload-message.js'
 
 const uploadForm = document.querySelector('.img-upload__form');
@@ -64,7 +64,7 @@ const setUserFormSubmit = () => {
   uploadForm.addEventListener('submit', (evt) => {
     evt.preventDefault();
 
-    sendDataAsync(
+    sendData(
       onSuccessMessage,
       onErrorMessage,
       new FormData(evt.target),

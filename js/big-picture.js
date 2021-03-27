@@ -1,6 +1,5 @@
 import { isEscEvent } from './util.js';
 import { listElement } from './render-posts.js';
-import { mockData } from './generate-posts.js';
 
 const bigPicture = document.querySelector('.big-picture')
 const socialCommentCountBlock = document.querySelector('.social__comment-count')
@@ -9,10 +8,8 @@ const bodyContainer = document.querySelector('body')
 const closeButton = bigPicture.querySelector('.big-picture__cancel');
 
 
-const showBigPicture = (evt) => {
-  const pictureId = parseInt(evt.target.parentNode.id)
-  const pictureElementData = mockData.find((object) => object.id === pictureId);
-  renderBigPicture(pictureElementData)
+const showBigPicture = (data) => {
+  renderBigPicture(data)
   bigPicture.classList.remove('hidden')
   socialCommentCountBlock.classList.add('hidden')
   commentsLoader.classList.add('hidden')
@@ -21,13 +18,13 @@ const showBigPicture = (evt) => {
   document.addEventListener('keydown', keyDownHandler);
 }
 
-const renderBigPicture = ({ url, comments, likes, desc }) => {
+const renderBigPicture = ({ url, comments, likes, description }) => {
   const socialComments = bigPicture.querySelector('.social__comments');
 
   bigPicture.querySelector('.big-picture__img').querySelector('img').src = url
   bigPicture.querySelector('.likes-count').innerText = likes
   bigPicture.querySelector('.comments-count').innerText = comments.length
-  bigPicture.querySelector('.social__caption').innerText = desc
+  bigPicture.querySelector('.social__caption').innerText = description
   
   const commentsArray = comments.map((currentValue) => {
     return createComment(currentValue)

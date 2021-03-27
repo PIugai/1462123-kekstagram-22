@@ -18,13 +18,12 @@ const renderPosts = (posts) => {
     picturesSectionFragment.appendChild(createPostElement(post));
   });
   listElement.appendChild(picturesSectionFragment);
-  listElement.addEventListener('click', postClickHandler);
-}
-
-const postClickHandler = (evt) => {
-  if (evt.target.classList.contains('picture__img')) {
-    showBigPicture(evt);
-  }
+  listElement.addEventListener('click', (evt) => {
+    if (evt.target.className === 'picture__img') {
+      const id = evt.target.parentNode.id;
+      showBigPicture(posts.find(elem => elem.id == id))
+    }
+  });
 }
 
 export { renderPosts, listElement }
