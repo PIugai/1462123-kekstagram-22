@@ -1,6 +1,10 @@
+import { getData } from './api.js';
 import { renderPosts } from './render-posts.js';
-import { mockData } from './generate-posts.js';
+import { setUserFormSubmit } from './image-upload.js';
 import './image-upload.js';
 import './editor.js';
 
-renderPosts(mockData);
+getData((data) => {
+  renderPosts(data)
+})
+setUserFormSubmit();
