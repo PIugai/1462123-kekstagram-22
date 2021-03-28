@@ -28,4 +28,17 @@ const hasDuplicates = (array) => {
   return new Set(array).size !== array.length 
 }
 
-export { getRandomIntFromRange, getRandomArrayElement, isGreaterThanMaxStringLength, isEscEvent, hasDuplicates }
+const shuffleArray = (array) => {
+  return array.sort(() => Math.random() - 0.5);
+}
+
+const debounce = (cb, timeout) => {
+  let timer;
+  return (...args) => {
+    const callBack = () => cb.apply(this, args);
+    clearTimeout(timer);
+    timer = setTimeout(callBack, timeout);
+  };
+};
+
+export { getRandomIntFromRange, getRandomArrayElement, isGreaterThanMaxStringLength, isEscEvent, hasDuplicates, shuffleArray, debounce }
