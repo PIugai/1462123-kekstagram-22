@@ -1,7 +1,7 @@
 # Личный проект «Кекстаграм»
 
-* Студент: [Pavel Iugai](https://up.htmlacademy.ru/javascript/22/user/1462123).
-* Наставник: [Альбина Токарчук](https://htmlacademy.ru/profile/id167491).
+- Студент: [Pavel Iugai](https://up.htmlacademy.ru/javascript/22/user/1462123).
+- Наставник: [Жора Милевский](https://htmlacademy.ru/profile/id366911).
 
 ---
 

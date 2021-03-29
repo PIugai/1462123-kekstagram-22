@@ -55,6 +55,10 @@ const createComments = (commentsData) => {
 };
 
 const onCommentsLoaderClick = () => {
+  if (commentsData.length === 0) {
+    commentsLoader.classList.add('hidden');
+    return;
+  }
   createComments(commentsData);
   shownCommentsCount += MAX_COMMENTS_COUNT;
 
@@ -64,9 +68,6 @@ const onCommentsLoaderClick = () => {
 
   commentsShown.textContent = shownCommentsCount;
 
-  if (commentsData.length === 0) {
-    commentsLoader.classList.add('hidden');
-  }
 };
 
 const renderBigPicture = ({ url, comments, likes, description }) => {
