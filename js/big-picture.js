@@ -54,7 +54,7 @@ const createComments = (commentsData) => {
   socialComments.appendChild(commentsFragment);
 };
 
-const onCommentsLoaderClick = () => {
+const commentsLoaderHandler = () => {
   if (commentsData.length === 0) {
     commentsLoader.classList.add('hidden');
     return;
@@ -79,7 +79,7 @@ const renderBigPicture = ({ url, comments, likes, description }) => {
   commentsData = comments.slice()
   if (comments.length > MAX_COMMENTS_COUNT) {
     commentsLoader.classList.remove('hidden');
-    commentsLoader.addEventListener('click', onCommentsLoaderClick)
+    commentsLoader.addEventListener('click', commentsLoaderHandler)
   } else {
     commentsLoader.classList.add('hidden')
   }

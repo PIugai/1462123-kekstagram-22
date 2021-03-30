@@ -11,7 +11,7 @@ const showUploadSuccessMessage = () => {
 
   const documentKeydownHandler = (evt) => {
     if (isEscEvent(evt)) {
-      main.removeChild(successMessage);
+      if (main.contains(successMessage)) main.removeChild(successMessage) ;
       document.removeEventListener('keydown', documentKeydownHandler);
     }
   }

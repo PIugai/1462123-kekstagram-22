@@ -21,7 +21,7 @@ const renderPosts = (posts) => {
   listElement.addEventListener('click', (evt) => {
     if (evt.target.className === 'picture__img') {
       const id = evt.target.parentNode.id;
-      showBigPicture(posts.find(elem => elem.id == id))
+      showBigPicture(posts.find(elem => elem.id === parseInt(id)))
     }
   });
 }

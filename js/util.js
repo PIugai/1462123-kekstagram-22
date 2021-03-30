@@ -32,7 +32,7 @@ const shuffleArray = (array) => {
   return array.sort(() => Math.random() - 0.5);
 }
 
-const debounce = (cb, timeout) => {
+const useDebounce = (cb, timeout) => {
   let timer;
   return (...args) => {
     const callBack = () => cb.apply(this, args);
@@ -41,4 +41,4 @@ const debounce = (cb, timeout) => {
   };
 };
 
-export { getRandomIntFromRange, getRandomArrayElement, isGreaterThanMaxStringLength, isEscEvent, hasDuplicates, shuffleArray, debounce }
+export { getRandomIntFromRange, getRandomArrayElement, isGreaterThanMaxStringLength, isEscEvent, hasDuplicates, shuffleArray, useDebounce }

@@ -1,5 +1,5 @@
 import { renderPosts } from './render-posts.js';
-import { debounce, shuffleArray } from './util.js'
+import { useDebounce, shuffleArray } from './util.js'
 
 const RENDER_DELAY = 500;
 const RANDOM_POSTS_COUNT = 10;
@@ -52,7 +52,7 @@ const onFilterFormChange = (evt, posts) => {
 };
 
 const setPictureFilter = (data) => {
-  imageFiltersForm.addEventListener('click', debounce((evt) => onFilterFormChange(evt, data), RENDER_DELAY))
+  imageFiltersForm.addEventListener('click', useDebounce((evt) => onFilterFormChange(evt, data), RENDER_DELAY))
 };
 
 export { showFilters, setPictureFilter };

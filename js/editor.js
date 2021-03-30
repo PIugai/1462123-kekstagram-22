@@ -19,11 +19,11 @@ let currentEffect = '';
 
 const setScaleControls = () => {
   scaleInput.value = SCALE_DEFAULT + '%';
-  scaleUpButton.addEventListener('click', onScaleUpClick);
-  scaleDownButton.addEventListener('click', onScaleDownClick);
+  scaleUpButton.addEventListener('click', scaleUpClickHandle);
+  scaleDownButton.addEventListener('click', scaleDownClickHandle);
 }
 
-const onScaleUpClick = () => {
+const scaleUpClickHandle = () => {
   if (scale < SCALE_MAX) {
     scale += SCALE_STEP;
     scaleInput.value = scale + '%';
@@ -31,7 +31,7 @@ const onScaleUpClick = () => {
   }
 }
 
-const onScaleDownClick = () => {
+const scaleDownClickHandle = () => {
   if (scale > SCALE_MIN) {
     scale -= SCALE_STEP;
     scaleInput.value = scale + '%';
@@ -63,10 +63,10 @@ const setSlider = () => {
     },
   });
   sliderBlock.classList.add('hidden');
-  effectsList.addEventListener('change', onEffectsListChange);
+  effectsList.addEventListener('change', effectsListChangeHandle);
 }
 
-const onEffectsListChange = (evt) => {
+const effectsListChangeHandle = (evt) => {
   clearEffect();
   setEffect(evt);
 }

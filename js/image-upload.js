@@ -26,8 +26,13 @@ const showImageEditor = () => {
 const hideImageEditor = () => {
   editor.classList.add('hidden');
   bodyContainer.classList.remove('modal-open');
+  tagsInput.removeEventListener('input', tagsInputHandler);
+  document.removeEventListener('keydown', documentKeydownHandler);
   uploadInput.value = '';
+  tagsInput.value = '';
+  descriptionInput.value = ''
   removeSlider();
+  uploadForm.reset();
 }
 
 const closeButtonHandler = () => {
@@ -46,6 +51,7 @@ const documentKeydownHandler = (evt) => {
 
 const resetPage = () => {
   hideImageEditor();
+  uploadForm.reset();
 };
 
 const onSuccessMessage = () => {
