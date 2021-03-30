@@ -55,19 +55,19 @@ const createComments = (commentsData) => {
 };
 
 const commentsLoaderHandler = () => {
+  createComments(commentsData);
+  shownCommentsCount += MAX_COMMENTS_COUNT;
+  
+  if (shownCommentsCount >= currentCommentsLength) {
+    shownCommentsCount = currentCommentsLength;
+  }
+  
+  commentsShown.textContent = shownCommentsCount;
+  
   if (commentsData.length === 0) {
     commentsLoader.classList.add('hidden');
     return;
   }
-  createComments(commentsData);
-  shownCommentsCount += MAX_COMMENTS_COUNT;
-
-  if (shownCommentsCount >= currentCommentsLength) {
-    shownCommentsCount = currentCommentsLength;
-  }
-
-  commentsShown.textContent = shownCommentsCount;
-
 };
 
 const renderBigPicture = ({ url, comments, likes, description }) => {
